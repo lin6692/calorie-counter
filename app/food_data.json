@@ -1,0 +1,187 @@
+{
+    "avocado":
+    {
+        "text": "avocado",
+        "parsed": [
+          {
+            "food": {
+              "foodId": "food_b0yuze4b1g3afpanijno5abtiu28",
+              "label": "Avocado",
+              "nutrients": {
+                "ENERC_KCAL": 160,
+                "PROCNT": 2,
+                "FAT": 14.66,
+                "CHOCDF": 8.53,
+                "FIBTG": 6.7
+              },
+              "category": "Generic foods",
+              "categoryLabel": "food",
+              "image": "https://www.edamam.com/food-img/984/984a707ea8e9c6bf5f6498970a9e6d9d.jpg"
+            },
+            "quantity": 1,
+            "measure": {
+              "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
+              "label": "Serving",
+              "weight": 50
+            }
+          }
+        ],
+        "hints": [
+          {
+            "food": {
+              "foodId": "food_b0yuze4b1g3afpanijno5abtiu28",
+              "label": "Avocado",
+              "nutrients": {
+                "ENERC_KCAL": 160,
+                "PROCNT": 2,
+                "FAT": 14.66,
+                "CHOCDF": 8.53,
+                "FIBTG": 6.7
+              },
+              "category": "Generic foods",
+              "categoryLabel": "food",
+              "image": "https://www.edamam.com/food-img/984/984a707ea8e9c6bf5f6498970a9e6d9d.jpg"
+            },
+            "measures": [
+              {
+                "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
+                "label": "Whole",
+                "weight": 201
+              },
+              {
+                "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
+                "label": "Serving",
+                "weight": 50
+              },
+              {
+                "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_strip",
+                "label": "Strip",
+                "weight": 34
+              },
+              {
+                "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_slice",
+                "label": "Slice",
+                "weight": 25
+              },
+              {
+                "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
+                "label": "Gram",
+                "weight": 1
+              },
+              {
+                "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
+                "label": "Ounce",
+                "weight": 28.349523125
+              }
+            ]
+          }
+        ]
+    },
+
+    "banana":
+    {
+        "text": "banana",
+        "parsed": [
+          {
+            "food": {
+              "foodId": "food_bjsfxtcaidvmhaa3afrbna43q3hu",
+              "label": "Banana",
+              "nutrients": {
+                "ENERC_KCAL": 89,
+                "PROCNT": 1.09,
+                "FAT": 0.33,
+                "CHOCDF": 22.84,
+                "FIBTG": 2.6
+              },
+              "category": "Generic foods",
+              "categoryLabel": "food",
+              "image": "https://www.edamam.com/food-img/9f6/9f6181163a25c96022ee3fc66d9ebb11.jpg"
+            },
+            "quantity": 1,
+            "measure": {
+              "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
+              "label": "Serving",
+              "weight": 126
+            }
+          }
+        ],
+        "hints": [
+            {
+              "food": {
+                "foodId": "food_bjsfxtcaidvmhaa3afrbna43q3hu",
+                "label": "Banana",
+                "nutrients": {
+                  "ENERC_KCAL": 89,
+                  "PROCNT": 1.09,
+                  "FAT": 0.33,
+                  "CHOCDF": 22.84,
+                  "FIBTG": 2.6
+                },
+                "category": "Generic foods",
+                "categoryLabel": "food",
+                "image": "https://www.edamam.com/food-img/9f6/9f6181163a25c96022ee3fc66d9ebb11.jpg"
+              },
+              "measures": [
+                {
+                  "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
+                  "label": "Whole",
+                  "weight": 115.7,
+                  "qualified": [
+                    {
+                      "qualifiers": [
+                        {
+                          "uri": "http://www.edamam.com/ontologies/edamam.owl#Qualifier_medium",
+                          "label": "medium"
+                        }
+                      ],
+                      "weight": 118
+                    },
+                    {
+                      "qualifiers": [
+                        {
+                          "uri": "http://www.edamam.com/ontologies/edamam.owl#Qualifier_large",
+                          "label": "large"
+                        }
+                      ],
+                      "weight": 136
+                    },
+                    {
+                      "qualifiers": [
+                        {
+                          "uri": "http://www.edamam.com/ontologies/edamam.owl#Qualifier_small",
+                          "label": "small"
+                        }
+                      ],
+                      "weight": 101
+                    },
+                    {
+                      "qualifiers": [
+                        {
+                          "uri": "http://www.edamam.com/ontologies/edamam.owl#Qualifier_extra_large",
+                          "label": "extra large"
+                        }
+                      ],
+                      "weight": 152
+                    }
+                  ]
+                },
+                {
+                  "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
+                  "label": "Serving",
+                  "weight": 126
+                },
+                {
+                  "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
+                  "label": "Gram",
+                  "weight": 1
+                },
+                {
+                  "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
+                  "label": "Ounce",
+                  "weight": 28.349523125
+                }
+            ]
+          }
+        ]
+    }
+}
