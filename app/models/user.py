@@ -2,6 +2,7 @@ from app import db
 
 
 class User(db.Document):
+    user_id = db.IntField(required=True, unique=True)
     user_name = db.StringField(required=True, unique=True)
     email = db.StringField(required=True)
     gender = db.StringField()
