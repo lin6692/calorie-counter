@@ -23,4 +23,7 @@ def create_app(test_config=None):
     from .routes.users import users_bp
     app.register_blueprint(users_bp)
 
+    from .routes.calories import calories_bp
+    app.register_blueprint(calories_bp)
+
     return app
