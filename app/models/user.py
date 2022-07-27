@@ -9,4 +9,4 @@ class User(db.Document):
     age = db.IntField()
     height = db.IntField()
     weight = db.IntField()
-    daily_calorie_intake = db.IntField()
+    daily_calorie_intake = db.IntField(required=True)
