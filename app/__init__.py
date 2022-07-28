@@ -3,14 +3,7 @@ from flask_mongoengine import MongoEngine
 from dotenv import load_dotenv
 import os
 from flask_cors import CORS
-from flask_login import (
-    LoginManager,
-    current_user,
-    login_required,
-    login_user,
-    logout_user,
-)
-from oauthlib.oauth2 import WebApplicationClient
+from flask_login import LoginManager
 
 db = MongoEngine()
 login_manager = LoginManager()

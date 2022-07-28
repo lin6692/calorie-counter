@@ -1,43 +1,46 @@
-from flask import Blueprint, request, make_response, jsonify, abort
+from flask import Blueprint, request
 from app.models.user import User
-from app import db
-import mongoengine
-from flask import Blueprint, Flask, request, jsonify, redirect, url_for, current_app
+from app import db, login_manager
+from flask import Blueprint, request, redirect, url_for
 from flask_login import (
-    LoginManager,
     current_user,
     login_required,
     login_user,
     logout_user,
 )
 import requests
-from oauthlib.oauth2 import WebApplicationClient
-from app.models.user import User
-from app import db, login_manager
-from app.routes.google_auth import get_google_provider_cfg, client, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
-import os
 import json
+import requests
+from oauthlib.oauth2 import WebApplicationClient
+import os
+
+GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID', None)
+GOOGLE_CLIENT_SECRET = os.environ.get('GOOGLE_CLIENT_SECRET', None)
+GOOGLE_DISCOVERY_URL = (
+    "https://accounts.google.com/.well-known/openid-configuration"
+)
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+client = WebApplicationClient(GOOGLE_CLIENT_ID)
+
+
+def get_google_provider_cfg():
+    return requests.get(GOOGLE_DISCOVERY_URL).json()
 
 
 app_bp = Blueprint('app_bp', __name__, url_prefix='')
 
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.get_user(user_id)
-
-
 @app_bp.route("/")
 def index():
+    print(current_user.is_authenticated)
     if current_user.is_authenticated:
-        print("I get here!!")
+        print("yay!!!")
         return (
-            "ok!!!!!"
-            # "<p>Hello, {}! You're logged in! Email: {}</p>"
-            # "<div><p>Google Profile Picture:</p>"
-            # '<img src="{}" alt="Google profile pic"></img></div>'
-            # '<a class="button" href="/logout">Logout</a>'.format(
-            #     current_user.user_name, current_user.email
+            "<p>Hello, {}! You're logged in! Email: {}</p>"
+            "<div><p>Google Profile Picture:</p>"
+            '<img src="{}" alt="Google profile pic"></img></div>'
+            '<a class="button" href="/logout">Logout</a>'.format(
+                current_user.user_name, current_user.email, None)
         )
 
     else:
@@ -65,7 +68,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for("index"))
+    return redirect(url_for("app_bp.index"))
 
 
 @ app_bp.route("/login/callback")
@@ -98,11 +101,21 @@ def callback():
     userinfo_endpoint = google_provider_cfg["userinfo_endpoint"]
     uri, headers, body = client.add_token(userinfo_endpoint)
     userinfo_response = requests.get(uri, headers=headers, data=body)
-    print("the end of callback")
 
     if userinfo_response.json().get("email_verified"):
-        print(userinfo_response.json())
+        user_id = userinfo_response.json()["sub"]
+        user_email = userinfo_response.json()["email"]
+        user_name = userinfo_response.json()["given_name"]
     else:
         return "User email not available or not verified by Google.", 400
 
+    user = User.get_user(user_id)
+    if not user:
+        user = User(user_id=str(user_id), email=user_email,
+                    # *******************************************************
+                    # *************** update calorie intake *****************
+                    # *******************************************************
+                    user_name=user_name, daily_calorie_intake=2000).save()
+
+    login_user(user)
     return redirect(url_for("app_bp.index"))
