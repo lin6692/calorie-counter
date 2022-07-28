@@ -31,6 +31,8 @@ def create_app(test_config=None):
             'host': os.environ.get('MONGO_TEST_URI')}
 
     db.init_app(app)
+
+    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
     login_manager.init_app(app)
 
     # Register Blueprints
