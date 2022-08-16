@@ -19,5 +19,6 @@ def get_calorie_from_food_API(search_term):
     response = requests.get(URL, params=params)
     food_data = response.json()
     calorie_data = food_data['hints'][0]
-    return {'calorie_per_gram': calorie_data['food']['nutrients']['ENERC_KCAL']/100,
+    return {'name': calorie_data['food']["label"],
+            'calorie_per_gram': calorie_data['food']['nutrients']['ENERC_KCAL']/100,
             'measures': calorie_data['measures']}
